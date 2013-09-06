@@ -468,7 +468,5 @@ int uv__getaddrinfo_translate_error(int sys_err) {
   case EAI_SYSTEM: return UV_EAI_SYSTEM;
 #endif
   }
-  assert(!"unknown EAI_* error code");
-  abort();
-  return 0;  /* Pacify compiler. */
+  return uv_translate_sys_error(sys_err);
 }
